@@ -1,6 +1,8 @@
 # MotorECS
 Motor de Videojuegos con patrón de diseño ECS Entity-Component-System
 
+![Arquitectura ECS](img/ECS Arquitectura.png)
+
 ## ¿Qué es ECS?
 ECS (Entity-Component-System) es un patrón de diseño utilizado para estructurar los juegos (especialmente motores de juegos) de forma que:
 
