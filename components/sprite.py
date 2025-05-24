@@ -1,5 +1,4 @@
 class Sprite:
-    def __init__(self, image):
+    def __init__(self, image=None, char="#"):
         self.image = image
-        self.width = image.get_width()
-        self.height = image.get_height()
+        self.char = char
