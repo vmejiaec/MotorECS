@@ -3,6 +3,7 @@ from ecs import EntityManager, ComponentManager
 from systems import MovementSystem, RenderSystem
 from components import Position, Velocity, Sprite
 from render import Renderer, PygameRenderer, ConsoleRenderer
+from game_engine import GameEngine
 
 def main():
     # Setup
@@ -10,11 +11,12 @@ def main():
     component_manager = ComponentManager()    
     renderer = ConsoleRenderer()
     renderer.initialize(80, 30)
-    pygame.display.set_caption("ECS Game Example")
     
     # Systems
-    render_system = RenderSystem(component_manager, renderer)
-    movement_system = MovementSystem(component_manager)
+    systems = [
+        MovementSystem(component_manager),
+        RenderSystem(component_manager, renderer)
+    ]
 
     # Crear entidades
     e1 = entity_manager.create_entity()
@@ -27,13 +29,8 @@ def main():
     component_manager.add_component(e2, Velocity(-0.01, 0.003))
     component_manager.add_component(e2, Sprite(char='O'))
 
-
-    # Game loop (limitado a 10 frames de prueba)
-    for tick in range(7000):
-        movement_system.update()
-        render_system.update()
-
-    renderer.shutdown()
+    engine = GameEngine(component_manager, systems, renderer, max_frames=7000)
+    engine.run()
 
 if __name__ == "__main__":
     main()

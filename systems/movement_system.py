@@ -14,5 +14,3 @@ class MovementSystem:
             # Update the position based on the velocity and delta time
             position.x += velocity.x 
             position.y += velocity.y 
-            # Print the updated position for debugging
-            print(f"Entity {entity_id} moved to position: ({position.x}, {position.y})")
