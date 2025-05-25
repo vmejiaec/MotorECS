@@ -9,8 +9,12 @@ def main():
     # Setup
     entity_manager = EntityManager()
     component_manager = ComponentManager()    
-    renderer = ConsoleRenderer()
-    renderer.initialize(80, 30)
+    
+    #renderer = ConsoleRenderer()    
+    #renderer.initialize(80, 30)
+
+    renderer = PygameRenderer()
+    renderer.initialize(800, 300)
     
     # Systems
     systems = [
@@ -21,15 +25,15 @@ def main():
     # Crear entidades
     e1 = entity_manager.create_entity()
     component_manager.add_component(e1, Position(1, 4))
-    component_manager.add_component(e1, Velocity(0.01, 0.002))
+    component_manager.add_component(e1, Velocity(1, 0.2) * 2 )
     component_manager.add_component(e1, Sprite(char='X'))
 
     e2 = entity_manager.create_entity()
-    component_manager.add_component(e2, Position(70, 2))
-    component_manager.add_component(e2, Velocity(-0.01, 0.003))
+    component_manager.add_component(e2, Position(750, 2))
+    component_manager.add_component(e2, Velocity(-1, 0.3) * 2)
     component_manager.add_component(e2, Sprite(char='O'))
 
-    engine = GameEngine(component_manager, systems, renderer, max_frames=7000)
+    engine = GameEngine(component_manager, systems, renderer, max_frames=60)
     engine.run()
 
 if __name__ == "__main__":

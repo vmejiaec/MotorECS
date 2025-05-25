@@ -7,7 +7,6 @@ class GameEngine:
         self.max_frames = max_frames
 
     def run(self):
-        #self.renderer.initialize(20, 10)  # O toma el tamaño desde fuera si prefieres
         try:
             for tick in range(self.max_frames):
                 for system in self.systems:
